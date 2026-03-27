@@ -1,0 +1,109 @@
+{
+    "name": "custom-buttons-context",
+    "displayName": "Custom Buttons and Context Menus",
+    "description": "Adds additional colorized buttons to top bar,  and custom commands to right-click menu for HTML",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/tpill90/vscode-custom-buttons-context"
+    },
+    "version": "0.1.0",
+    "publisher": "tpill90",
+    "author": {
+        "name": "Tim Pilius"
+    },
+    "engines": {
+        "vscode": "^1.80.0"
+    },
+    "categories": [ "Keymaps" ],
+    "main": "./extension.js",
+    "contributes":
+    {
+        "commands":
+        [
+            {
+                "command": "emmet.removeTagContext",
+                "title": "Remove Tag (Emmet)"
+            },
+            {
+                "command": "emmet.wrapWithAbbreviation",
+                "title": "Wrap With Tag (Emmet)"
+            },
+            {
+                "command": "TestExtension.saveAll",
+                "title": "Save All",
+                "icon":
+                {
+                    "light": "images/save.svg",
+                    "dark": "images/save.svg"
+                }
+            },
+            {
+                "command": "TestExtension.beautify",
+                "title": "Beautify2",
+                "icon":
+                {
+                    "light": "images/format.svg",
+                    "dark": "images/format.svg"
+                }
+            },
+            {
+                "command": "TestExtension.commentLine",
+                "title": "Toggle line comment",
+                "category": "TestExtension",
+                "icon": {
+                    "light": "images/commentLine.svg",
+                    "dark": "images/commentLine.svg"
+                }
+            },
+            {
+                "command": "TestExtension.startDebugging",
+                "title": "Start debugging",
+                "category": "TestExtension",
+                "icon": {
+                    "light": "images/debug.svg",
+                    "dark": "images/debug.svg"
+                }
+            }
+        ],
+        "menus":
+        {
+            "editor/context":
+            [
+                {
+                    "command": "emmet.removeTagContext",
+                    "when": "editorLangId == html || editorLangId == xml",
+                    "group": "_1TestExtension"
+                },
+                {
+                    "command": "emmet.wrapWithAbbreviation",
+                    "when": "editorLangId == html || editorLangId == xml",
+                    "group": "_1TestExtension"
+                }
+            ],
+            "editor/title":
+            [
+                {
+                    "when": "!isInDiffEditor && !markdownPreviewFocus",
+                    "command": "TestExtension.saveAll",
+                    "group": "navigation@4"
+                },
+                {
+                    "when": "!isInDiffEditor && !markdownPreviewFocus",
+                    "command": "TestExtension.beautify",
+                    "group": "navigation@4"
+                },
+                {
+                    "when": "editorTextFocus && !editorReadonly",
+                    "command": "TestExtension.commentLine",
+                    "group": "navigation@4"
+                },
+                {
+                    "when": "debuggersAvailable && !inDebugMode",
+                    "command": "TestExtension.startDebugging",
+                    "group": "navigation@4"
+                }
+            ]
+        }
+    }
+}
