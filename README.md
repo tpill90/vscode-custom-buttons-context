@@ -1,6 +1,11 @@
 <!-- TODO finish or whatever -->
 
-# Emmet Remove Tag (Context Menu)
+# Custom Buttons and Context Menu
+
+> [!WARNING]
+> This project is for my own personal use, and not intended for general use.  > Use at your own risk, no support is offered.
+
+# Development
 
 ## Build
 npm install -g vsce
@@ -8,13 +13,13 @@ vsce package
 
 ## Making changes
 
-* Press `F5` to open a new window with your extension loaded.
+* Press `F5` to open a new window with your extension loaded.  There is no need to disable the release version you have installed,  the newer one will override it (I think?).
+* You can also reload (`Ctrl+R`) the VS Code window with your extension to load your changes.
 
-### Make changes
+## Viewing Logs
+Writing with `console.log()` will show up in the **DEBUG CONSOLE** tab of the VSCode instance you are developing in.
 
-- You can also reload (`Ctrl+R`) the VS Code window with your extension to load your changes.
-
-## Publishing
+# Publishing
 
 To publish a newer version:
 ```

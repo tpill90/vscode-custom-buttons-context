@@ -1,15 +1,15 @@
 const vscode = require('vscode');
+console.log("asd");
 
+// TODO add other useful buttons from the original extension
+// TODO find some better colored icons
+// TODO Right click -> Paste json as code
+// TODO Right click -> Remove empty lines
+// TODO rename the commands to remove TestExtension and replace with something else
+// TODO see if its possible to add a right click entry that will add a file/folder to the "search.exclude" setting in the current workspace
+// TODO document how to add commands and how exactly the structure works.  I've forgotten how this works in the last 4 months.
 function activate(context)
 {
-    // TODO add other useful buttons from the original extension
-    // TODO find some better colored icons
-    // TODO Add - Debug button
-    // TODO add run current powershell script button
-    // TODO Right click -> Paste json as code
-    // TODO Right click -> Remove empty lines
-    // TODO rename the commands to remove TestExtension and replace with something else
-    // TODO see if its possible to add a right click entry that will add a file/folder to the "search.exclude" setting in the current workspace
     // ["name defined in package.json" , "name of command to execute"]
     let commandArray = [
         ["emmet.removeTagContext", "editor.emmet.action.removeTag"],
@@ -28,6 +28,11 @@ function activate(context)
         context.subscriptions.push(disposable);
     }
 
+    SetupComplexCommands(context);
+}
+
+function SetupComplexCommands(context)
+{
     // Add complex commands separately
     let disposableBeautify = vscode.commands.registerCommand("TestExtension.beautify",
         () =>
@@ -41,14 +46,12 @@ function activate(context)
 
             if (vscode.window.state.focused === true && !editor.selection.isEmpty)
             {
-                vscode.commands.executeCommand("editor.action.formatSelection")
-                    .then(function () { });
+                vscode.commands.executeCommand("editor.action.formatSelection");
+                return;
             }
-            else
-            {
-                vscode.commands.executeCommand("editor.action.formatDocument")
-                    .then(function () { });
-            }
+
+            vscode.commands.executeCommand("editor.action.formatDocument");
+
         }
     );
     context.subscriptions.push(disposableBeautify);

@@ -9,10 +9,12 @@
     },
     "version": "0.1.0",
     "publisher": "tpill90",
-    "author": {
+    "author":
+    {
         "name": "Tim Pilius"
     },
-    "engines": {
+    "engines":
+    {
         "vscode": "^1.80.0"
     },
     "categories": [ "Keymaps" ],
