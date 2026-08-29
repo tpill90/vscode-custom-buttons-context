@@ -8,8 +8,11 @@
 # Development
 
 ## Build
-npm install -g vsce
-vsce package
+```powershell
+npm install
+npm run watch
+```
+
 
 ## Making changes
 
@@ -21,8 +24,15 @@ Writing with `console.log()` will show up in the **DEBUG CONSOLE** tab of the VS
 
 # Publishing
 
+To generate a local build:
+```
+npm install -g vsce
+vsce package
+```
+
 To publish a newer version:
 ```
+npm install -g vsce
 vsce publish
 ```
 

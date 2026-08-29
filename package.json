@@ -1,24 +1,40 @@
 {
     "name": "custom-buttons-context",
     "displayName": "Custom Buttons and Context Menus",
-    "description": "Adds additional colorized buttons to top bar,  and custom commands to right-click menu for HTML",
-    "repository":
-    {
-        "type": "git",
-        "url": "https://github.com/tpill90/vscode-custom-buttons-context"
-    },
+    "description": "Adds additional colorized buttons to the top bar, and custom commands to the right-click menu for HTML.",
     "version": "0.1.0",
     "publisher": "tpill90",
     "author":
     {
         "name": "Tim Pilius"
     },
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/tpill90/vscode-custom-buttons-context"
+    },
+    "license": "MIT",
     "engines":
     {
         "vscode": "^1.80.0"
     },
-    "categories": [ "Keymaps" ],
-    "main": "./extension.js",
+    "categories": [
+        "Keymaps"
+    ],
+    "main": "./out/extension.js",
+    "scripts":
+    {
+        "watch": "tsc -watch -p ./",
+        "package": "vsce package",
+        "prepublish": "npm run compile"
+    },
+    "devDependencies":
+    {
+        "@types/node": "^26.4.0",
+        "@types/vscode": "^1.80.0",
+        "@vscode/vsce": "^3.0.0",
+        "typescript": "^5.0.0"
+    },
     "contributes":
     {
         "commands":
@@ -34,8 +50,7 @@
             {
                 "command": "TestExtension.saveAll",
                 "title": "Save All",
-                "icon":
-                {
+                "icon": {
                     "light": "images/save.svg",
                     "dark": "images/save.svg"
                 }
@@ -43,8 +58,7 @@
             {
                 "command": "TestExtension.beautify",
                 "title": "Beautify2",
-                "icon":
-                {
+                "icon": {
                     "light": "images/format.svg",
                     "dark": "images/format.svg"
                 }
@@ -107,5 +121,13 @@
                 }
             ]
         }
-    }
+    },
+    "files": [
+        "out/**/*.js",
+        "out/**/*.js.map",
+        "images/*.svg",
+        "package.json",
+        "README.md",
+        "LICENSE"
+    ]
 }
