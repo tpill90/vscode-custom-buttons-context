@@ -50,7 +50,6 @@ vsce publish
 https://code.visualstudio.com/api/references/contribution-points#Command-icon-specifications
 https://code.visualstudio.com/docs/getstarted/keybindings
 https://code.visualstudio.com/docs/extensionAPI/vscode-api
-https://code.visualstudio.com/api/references/contribution-points#contributes.menus
 https://code.visualstudio.com/updates/v1_42#_workbench
 https://code.visualstudio.com/api/references/extension-manifest
 * [Contribution Points - Menus](https://code.visualstudio.com/api/references/contribution-points#contributes.menus)

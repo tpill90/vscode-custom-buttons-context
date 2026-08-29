@@ -8,7 +8,7 @@
             "type": "extensionHost",
             "request": "launch",
             "args": [
-                "${workspaceFolder}\\language-test-files",
+                "${workspaceFolder}\\test-files",
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ]
         }

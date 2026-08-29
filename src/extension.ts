@@ -16,11 +16,10 @@ const commandDefinitions: readonly CommandDefinition[] = [
     ['emmet.wrapWithAbbreviation', 'editor.emmet.action.wrapWithAbbreviation'],
     ['tpill90.saveAll', 'workbench.action.files.saveAll'],
     ['tpill90.commentLine', 'editor.action.commentLine'],
-    ['tpill90.startDebugging', 'workbench.action.debug.start'],
-    ['remove-empty-lines.inSelection', 'remove-empty-lines.inSelection']
+    ['tpill90.startDebugging', 'workbench.action.debug.start']
 ];
 
-console.log("Loaded extension2");
+console.log("Loaded extension3");
 
 export function activate(context: vscode.ExtensionContext): void
 {
@@ -28,6 +27,8 @@ export function activate(context: vscode.ExtensionContext): void
     setupComplexCommands(context);
 }
 
+// This basically sets up a simple 1 to 1 mapping between commands I define and existing commands.
+// Essentially running a command will trigger the referenced command.
 function SetupSimpleCommands(context: vscode.ExtensionContext): void
 {
     for (const [commandId, targetCommand] of commandDefinitions)
