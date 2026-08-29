@@ -8,6 +8,7 @@
 // TODO add eslint
 
 import * as vscode from 'vscode';
+import { CodeToHtmlCommand } from './CodeToHtmlCommand';
 
 type CommandDefinition = readonly [id: string, targetCommand: string];
 
@@ -21,12 +22,13 @@ const commandDefinitions: readonly CommandDefinition[] = [
     ['tpill90.pasteJsonAsCode', 'quicktype.pasteJSONAsTypes']
 ];
 
-console.log("Loaded extension3");
 
-export function activate(context: vscode.ExtensionContext): void
+export async function activate(context: vscode.ExtensionContext): Promise<void>
 {
     SetupSimpleCommands(context);
     setupComplexCommands(context);
+    // TODO cleanup
+    context.subscriptions.push(vscode.commands.registerCommand('tpill90.codeToHtml', CodeToHtmlCommand));
 }
 
 // This basically sets up a simple 1 to 1 mapping between commands I define and existing commands.

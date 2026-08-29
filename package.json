@@ -57,7 +57,7 @@
             },
             {
                 "command": "tpill90.beautify",
-                "title": "Beautify2",
+                "title": "Beautify",
                 "icon": {
                     "light": "images/format.svg",
                     "dark": "images/format.svg"
@@ -86,6 +86,10 @@
             {
                 "command": "tpill90.pasteJsonAsCode",
                 "title": "Paste JSON As Code"
+            },
+            {
+                "command": "tpill90.codeToHtml",
+                "title": "Convert Code to HTML"
             }
         ],
         "menus":
@@ -109,6 +113,11 @@
                 },
                 {
                     "command": "tpill90.pasteJsonAsCode",
+                    "when": "editorTextFocus",
+                    "group": "_1tpill90"
+                },
+                {
+                    "command": "tpill90.codeToHtml",
                     "when": "editorTextFocus",
                     "group": "_1tpill90"
                 }
