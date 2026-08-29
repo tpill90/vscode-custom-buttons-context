@@ -48,7 +48,7 @@
                 "title": "Wrap With Tag (Emmet)"
             },
             {
-                "command": "TestExtension.saveAll",
+                "command": "tpill90.saveAll",
                 "title": "Save All",
                 "icon": {
                     "light": "images/save.svg",
@@ -56,7 +56,7 @@
                 }
             },
             {
-                "command": "TestExtension.beautify",
+                "command": "tpill90.beautify",
                 "title": "Beautify2",
                 "icon": {
                     "light": "images/format.svg",
@@ -64,18 +64,16 @@
                 }
             },
             {
-                "command": "TestExtension.commentLine",
+                "command": "tpill90.commentLine",
                 "title": "Toggle line comment",
-                "category": "TestExtension",
                 "icon": {
                     "light": "images/commentLine.svg",
                     "dark": "images/commentLine.svg"
                 }
             },
             {
-                "command": "TestExtension.startDebugging",
+                "command": "tpill90.startDebugging",
                 "title": "Start debugging",
-                "category": "TestExtension",
                 "icon": {
                     "light": "images/debug.svg",
                     "dark": "images/debug.svg"
@@ -89,34 +87,38 @@
                 {
                     "command": "emmet.removeTagContext",
                     "when": "editorLangId == html || editorLangId == xml",
-                    "group": "_1TestExtension"
+                    "group": "_1tpill90"
                 },
                 {
                     "command": "emmet.wrapWithAbbreviation",
                     "when": "editorLangId == html || editorLangId == xml",
-                    "group": "_1TestExtension"
+                    "group": "_1tpill90"
+                },
+                {
+                    "command": "remove-empty-lines.inSelection",
+                    "group": "_1tpill90"
                 }
             ],
             "editor/title":
             [
                 {
                     "when": "!isInDiffEditor && !markdownPreviewFocus",
-                    "command": "TestExtension.saveAll",
+                    "command": "tpill90.saveAll",
                     "group": "navigation@4"
                 },
                 {
                     "when": "!isInDiffEditor && !markdownPreviewFocus",
-                    "command": "TestExtension.beautify",
+                    "command": "tpill90.beautify",
                     "group": "navigation@4"
                 },
                 {
                     "when": "editorTextFocus && !editorReadonly",
-                    "command": "TestExtension.commentLine",
+                    "command": "tpill90.commentLine",
                     "group": "navigation@4"
                 },
                 {
                     "when": "debuggersAvailable && !inDebugMode",
-                    "command": "TestExtension.startDebugging",
+                    "command": "tpill90.startDebugging",
                     "group": "navigation@4"
                 }
             ]

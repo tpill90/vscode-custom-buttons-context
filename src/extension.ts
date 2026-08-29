@@ -2,9 +2,10 @@
 // TODO find some better colored icons
 // TODO Right click -> Paste json as code
 // TODO Right click -> Remove empty lines
-// TODO rename the commands to remove TestExtension and replace with something else
+// TODO rename the commands to remove tpill90 and replace with something else
 // TODO see if its possible to add a right click entry that will add a file/folder to the "search.exclude" setting in the current workspace
 // TODO document how to add commands and how exactly the structure works.  I've forgotten how this works in the last 4 months.
+// TODO add eslint
 
 import * as vscode from 'vscode';
 
@@ -13,14 +14,21 @@ type CommandDefinition = readonly [id: string, targetCommand: string];
 const commandDefinitions: readonly CommandDefinition[] = [
     ['emmet.removeTagContext', 'editor.emmet.action.removeTag'],
     ['emmet.wrapWithAbbreviation', 'editor.emmet.action.wrapWithAbbreviation'],
-    ['TestExtension.saveAll', 'workbench.action.files.saveAll'],
-    ['TestExtension.commentLine', 'editor.action.commentLine'],
-    ['TestExtension.startDebugging', 'workbench.action.debug.start'],
+    ['tpill90.saveAll', 'workbench.action.files.saveAll'],
+    ['tpill90.commentLine', 'editor.action.commentLine'],
+    ['tpill90.startDebugging', 'workbench.action.debug.start'],
+    ['remove-empty-lines.inSelection', 'remove-empty-lines.inSelection']
 ];
 
-console.log("Loaded extension");
+console.log("Loaded extension2");
 
 export function activate(context: vscode.ExtensionContext): void
+{
+    SetupSimpleCommands(context);
+    setupComplexCommands(context);
+}
+
+function SetupSimpleCommands(context: vscode.ExtensionContext): void
 {
     for (const [commandId, targetCommand] of commandDefinitions)
     {
@@ -31,14 +39,12 @@ export function activate(context: vscode.ExtensionContext): void
 
         context.subscriptions.push(disposable);
     }
-
-    setupComplexCommands(context);
 }
 
 function setupComplexCommands(context: vscode.ExtensionContext): void
 {
     const disposableBeautify = vscode.commands.registerCommand(
-        'TestExtension.beautify',
+        'tpill90.beautify',
         () =>
         {
             const editor = vscode.window.activeTextEditor;
