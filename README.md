@@ -52,5 +52,6 @@ https://code.visualstudio.com/docs/getstarted/keybindings
 https://code.visualstudio.com/docs/extensionAPI/vscode-api
 https://code.visualstudio.com/updates/v1_42#_workbench
 https://code.visualstudio.com/api/references/extension-manifest
+https://code.visualstudio.com/api/references/when-clause-contexts
 * [Contribution Points - Menus](https://code.visualstudio.com/api/references/contribution-points#contributes.menus)
 - You can open the full set of our API when you open the file `node_modules/vscode/vscode.d.ts`.

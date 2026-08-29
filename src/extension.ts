@@ -16,7 +16,9 @@ const commandDefinitions: readonly CommandDefinition[] = [
     ['emmet.wrapWithAbbreviation', 'editor.emmet.action.wrapWithAbbreviation'],
     ['tpill90.saveAll', 'workbench.action.files.saveAll'],
     ['tpill90.commentLine', 'editor.action.commentLine'],
-    ['tpill90.startDebugging', 'workbench.action.debug.start']
+    ['tpill90.startDebugging', 'workbench.action.debug.start'],
+    ['tpill90.removeEmptyLinesInSelection', 'remove-empty-lines.inSelection'],
+    ['tpill90.pasteJsonAsCode', 'quicktype.pasteJSONAsTypes']
 ];
 
 console.log("Loaded extension3");

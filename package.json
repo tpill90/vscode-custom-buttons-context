@@ -78,6 +78,14 @@
                     "light": "images/debug.svg",
                     "dark": "images/debug.svg"
                 }
+            },
+            {
+                "command": "tpill90.removeEmptyLinesInSelection",
+                "title": "Remove Empty Lines In Selection"
+            },
+            {
+                "command": "tpill90.pasteJsonAsCode",
+                "title": "Paste JSON As Code"
             }
         ],
         "menus":
@@ -95,7 +103,13 @@
                     "group": "_1tpill90"
                 },
                 {
-                    "command": "remove-empty-lines.inSelection",
+                    "command": "tpill90.removeEmptyLinesInSelection",
+                    "when": "editorHasSelection",
+                    "group": "_1tpill90"
+                },
+                {
+                    "command": "tpill90.pasteJsonAsCode",
+                    "when": "editorTextFocus",
                     "group": "_1tpill90"
                 }
             ],
