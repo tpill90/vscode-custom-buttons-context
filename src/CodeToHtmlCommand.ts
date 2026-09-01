@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
 // TODO consider adding this as a button instead
+// TODO consider adding more colors for the powershell syntax.  Compare to ISE?
+// TODO comment and cleanup
 export async function CodeToHtmlCommand(): Promise<void>
 {
     const editor = vscode.window.activeTextEditor;
@@ -38,35 +40,41 @@ function convertPowerShellToHtml(code: string): string
             continue;
         }
 
-        // Escape HTML so PowerShell source is displayed as code rather than markup.
-        // Quotes are intentionally left untouched because they are part of the
-        // generated HTML text and are needed for string highlighting.
+        // Escape HTML
         let escaped = escapeHtml(line);
 
-        // Highlight comments.
-        if (/^\s*#/.test(escaped))
+        // Preserve indentation
+        escaped = escaped.replace(/^ +/, match =>
+        {
+            return '&nbsp;'.repeat(match.length);
+        });
+
+        // Highlight comments
+        if (/^(&nbsp;)*#/.test(escaped))
         {
             escaped = `<span style="color:#2b7a2b;">${escaped}</span>`;
             output.push(`    <div>${escaped}</div>`);
             continue;
         }
 
-        // Highlight double-quoted strings.
+        // Highlight strings
         escaped = escaped.replace(
-            /"([^"\n]*)"/g,
-            '<span style="color:#c62828;">"$1"</span>',
+            /&quot;([^&]*)&quot;/g,
+            '<span style="color:#c62828;">&quot;$1&quot;</span>',
         );
 
-        // Highlight the first command-looking Verb-Noun word on the line.
+        // Highlight cmdlet
         escaped = escaped.replace(
-            /^(\s*)([A-Za-z]+-[A-Za-z]+)/,
+            /^(&nbsp;)*([A-Za-z]+-[A-Za-z]+)/,
             '$1<span style="color:#1565c0;">$2</span>',
         );
 
         output.push(`    <div>${escaped}</div>`);
     }
 
-    return `<div style="background-color:#f5f5f5;color:#222;padding:12px 16px;border:1px solid #ddd;font-size:13px;">\n${output.join('\n')}\n</div>`;
+    return `<div style="background-color:#f5f5f5;color:#222;padding:12px 16px;border:1px solid #ddd;font-size:13px;">
+${output.join('\n')}
+</div>`;
 }
 
 function escapeHtml(value: string): string
@@ -74,5 +82,7 @@ function escapeHtml(value: string): string
     return value
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }

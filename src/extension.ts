@@ -1,7 +1,7 @@
 // TODO add other useful buttons from the original extension
 // TODO find some better colored icons
-// TODO Right click -> Paste json as code
-// TODO Right click -> Remove empty lines
+
+// TODO Right click -> Join lines
 // TODO rename the commands to remove tpill90 and replace with something else
 // TODO see if its possible to add a right click entry that will add a file/folder to the "search.exclude" setting in the current workspace
 // TODO document how to add commands and how exactly the structure works.  I've forgotten how this works in the last 4 months.
