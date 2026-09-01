@@ -26,13 +26,12 @@ Writing with `console.log()` will show up in the **DEBUG CONSOLE** tab of the VS
 
 To generate a local build:
 ```
-npm install -g vsce
-vsce package
+npm run package
 ```
 
 To publish a newer version:
 ```
-npm install -g vsce
+npm install -g @vscode/vsce
 vsce publish
 ```
 

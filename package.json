@@ -2,7 +2,7 @@
     "name": "custom-buttons-context",
     "displayName": "Custom Buttons and Context Menus",
     "description": "Adds additional colorized buttons to the top bar, and custom commands to the right-click menu for HTML.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "tpill90",
     "author":
     {
