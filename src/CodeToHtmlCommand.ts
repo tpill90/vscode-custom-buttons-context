@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 // TODO consider adding this as a button instead
 // TODO consider adding more colors for the powershell syntax.  Compare to ISE?
 // TODO comment and cleanup
+// TODO check the extension and error out if its not powershell
 export async function CodeToHtmlCommand(): Promise<void>
 {
     const editor = vscode.window.activeTextEditor;
@@ -13,7 +14,7 @@ export async function CodeToHtmlCommand(): Promise<void>
     }
 
     const code = editor.document.getText();
-    const html = convertPowerShellToHtml(code);
+    const html = ConvertPowerShellToHtml(code);
 
     const newDocument = await vscode.workspace.openTextDocument({
         content: html,
@@ -27,7 +28,7 @@ export async function CodeToHtmlCommand(): Promise<void>
     );
 }
 
-function convertPowerShellToHtml(code: string): string
+function ConvertPowerShellToHtml(code: string): string
 {
     const lines = code.split(/\r?\n/);
     const output: string[] = [];
@@ -41,12 +42,12 @@ function convertPowerShellToHtml(code: string): string
         }
 
         // Escape HTML
-        let escaped = escapeHtml(line);
+        let escaped = EscapeHtml(line);
 
         // Preserve indentation
         escaped = escaped.replace(/^ +/, match =>
         {
-            return '&nbsp;'.repeat(match.length);
+            return '&nbsp;'.repeat(match.length * 2);
         });
 
         // Highlight comments
@@ -77,7 +78,7 @@ ${output.join('\n')}
 </div>`;
 }
 
-function escapeHtml(value: string): string
+function EscapeHtml(value: string): string
 {
     return value
         .replace(/&/g, '&amp;')

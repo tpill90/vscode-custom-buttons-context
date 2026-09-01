@@ -17,7 +17,7 @@ npm run watch
 ## Making changes
 
 * Press `F5` to open a new window with your extension loaded.  There is no need to disable the release version you have installed,  the newer one will override it (I think?).
-* You can also reload (`Ctrl+R`) the VS Code window with your extension to load your changes.
+* You can also reload the VS Code window with your extension to load your changes.  Use `Developer: Restart Extension Host` or keybind `Shift + Alt + R`
 
 ## Viewing Logs
 Writing with `console.log()` will show up in the **DEBUG CONSOLE** tab of the VSCode instance you are developing in.
