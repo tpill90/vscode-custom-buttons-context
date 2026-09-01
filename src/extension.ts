@@ -9,17 +9,21 @@
 
 import * as vscode from 'vscode';
 import { CodeToHtmlCommand } from './CodeToHtmlCommand';
+import { CleanITGHtmlCommand } from './CleanITGlueHtmlCommand';
 
 type CommandDefinition = readonly [id: string, targetCommand: string];
 
 const commandDefinitions: readonly CommandDefinition[] = [
+    // Context Menu
     ['emmet.removeTagContext', 'editor.emmet.action.removeTag'],
     ['emmet.wrapWithAbbreviation', 'editor.emmet.action.wrapWithAbbreviation'],
+    ['tpill90.removeEmptyLinesInSelection', 'remove-empty-lines.inSelection'],
+    ['tpill90.pasteJsonAsCode', 'quicktype.pasteJSONAsTypes'],
+
+    // Title bar
     ['tpill90.saveAll', 'workbench.action.files.saveAll'],
     ['tpill90.commentLine', 'editor.action.commentLine'],
-    ['tpill90.startDebugging', 'workbench.action.debug.start'],
-    ['tpill90.removeEmptyLinesInSelection', 'remove-empty-lines.inSelection'],
-    ['tpill90.pasteJsonAsCode', 'quicktype.pasteJSONAsTypes']
+    ['tpill90.startDebugging', 'workbench.action.debug.start']
 ];
 
 
@@ -29,6 +33,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void>
     setupComplexCommands(context);
     // TODO cleanup
     context.subscriptions.push(vscode.commands.registerCommand('tpill90.codeToHtml', CodeToHtmlCommand));
+    context.subscriptions.push(vscode.commands.registerCommand('tpill90.cleanITGHtml', CleanITGHtmlCommand));
 }
 
 // This basically sets up a simple 1 to 1 mapping between commands I define and existing commands.

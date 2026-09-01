@@ -90,6 +90,10 @@
             {
                 "command": "tpill90.codeToHtml",
                 "title": "Convert Code to HTML"
+            },
+            {
+                "command": "tpill90.cleanITGHtml",
+                "title": "Clean IT Glue HTML"
             }
         ],
         "menus":
@@ -107,6 +111,11 @@
                     "group": "_1tpill90"
                 },
                 {
+                    "command": "tpill90.cleanITGHtml",
+                    "when": "editorLangId == html",
+                    "group": "_1tpill90"
+                },
+                {
                     "command": "tpill90.removeEmptyLinesInSelection",
                     "when": "editorHasSelection",
                     "group": "_1tpill90"
@@ -114,12 +123,12 @@
                 {
                     "command": "tpill90.pasteJsonAsCode",
                     "when": "editorTextFocus",
-                    "group": "_1tpill90"
+                    "group": "_2tpill90"
                 },
                 {
                     "command": "tpill90.codeToHtml",
                     "when": "editorTextFocus",
-                    "group": "_1tpill90"
+                    "group": "_2tpill90"
                 }
             ],
             "editor/title":
