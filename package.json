@@ -2,7 +2,7 @@
     "name": "custom-buttons-context",
     "displayName": "Custom Buttons and Context Menus",
     "description": "Adds additional colorized buttons to the top bar, and custom commands to the right-click menu for HTML.",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "publisher": "tpill90",
     "author":
     {
@@ -30,7 +30,7 @@
     "devDependencies":
     {
         "@types/node": "26.4.0",
-        "@types/vscode": "1.134.0",
+        "@types/vscode": "^1.80.0",
         "@vscode/vsce": "3.9.2",
         "shiki": "4.4.3",
         "typescript": "5.9.3"
