@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 // TODO consider adding this as a button instead
 // TODO comment and cleanup
+// TODO write unit tests
 export async function CleanITGHtmlCommand(): Promise<void>
 {
     const editor = vscode.window.activeTextEditor;
@@ -47,7 +48,7 @@ function CleanHtml(html: string): string
 
     // TODO this will probably mess up my formatted code
     // Replace &nbsp; with space
-    clean = clean.replace(/&nbsp;/g, ' ');
+    // clean = clean.replace(/&nbsp;/g, ' ');
 
     // Remove CKEditor bookmark spans
     clean = clean.replace(/<span\b[^>]*\bdata-cke-bookmark="[^"]*"[^>]*>\s*<\/span>/g, '');
@@ -55,24 +56,23 @@ function CleanHtml(html: string): string
     // Remove empty spans
     clean = clean.replace(/<span\s+style="display:\s*none;">\s*<\/span>/gi, '');
 
-    // Apply image styles automatically, but preserve width.
+    // Add default styling to <img> elements that don't already have a style attribute.
+    clean = clean.replace(/<img\b(?![^>]*\bstyle\s*=)/gi, '<img style="display: inline-block; border: 2px solid #999; margin: 10px;"');
+
+    // Apply image styles , but preserve width.
     clean = clean.replace(/(<img\b[^>]*?)\sstyle\s*=\s*"([^"]*)"/gi,
         (_match, img: string, style: string) =>
         {
             let width = '';
 
-            const widthMatch = style.match(
-                /\bwidth\s*:\s*[^;"]+;?/i,
-            );
+            const widthMatch = style.match(/\bwidth\s*:\s*[^;"]+;?/i,);
 
             if (widthMatch)
             {
                 width = widthMatch[0].replace(/;$/, '');
             }
 
-            let newStyle =
-                'display: inline-block; border: 2px solid #999; margin: 10px;';
-
+            let newStyle = 'display: inline-block; border: 2px solid #999; margin: 10px;';
             if (width)
             {
                 newStyle += ` ${width};`;
