@@ -25,15 +25,15 @@
     "scripts":
     {
         "watch": "tsc -watch -p ./",
-        "package": "vsce package",
-        "prepublish": "npm run compile"
+        "package": "vsce package"
     },
     "devDependencies":
     {
-        "@types/node": "^26.4.0",
-        "@types/vscode": "^1.80.0",
-        "@vscode/vsce": "^3.0.0",
-        "typescript": "^5.0.0"
+        "@types/node": "26.4.0",
+        "@types/vscode": "1.134.0",
+        "@vscode/vsce": "3.9.2",
+        "shiki": "4.4.3",
+        "typescript": "5.9.3"
     },
     "contributes":
     {
