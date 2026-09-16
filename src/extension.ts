@@ -7,6 +7,7 @@
 // TODO document how to add commands and how exactly the structure works.  I've forgotten how this works in the last 4 months.
 // TODO add eslint
 // TODO Reduce package size after adding esbuild.  Its 10 megs
+// TODO add inspect tokens and scopes command
 
 import * as vscode from 'vscode';
 import { CodeToHtmlCommand } from './CodeToHtmlCommand';
