@@ -24,15 +24,20 @@
     "main": "./out/extension.js",
     "scripts":
     {
-        "watch": "tsc -watch -p ./",
-        "package": "vsce package"
+        "compile": "node esbuild.js",
+        "watch": "node esbuild.js --watch",
+        "package": "npm run compile && vsce package"
+    },
+    "dependencies":
+    {
+        "shiki": "4.4.3"
     },
     "devDependencies":
     {
         "@types/node": "26.4.0",
         "@types/vscode": "^1.80.0",
         "@vscode/vsce": "3.9.2",
-        "shiki": "4.4.3",
+        "esbuild": "0.28.2",
         "typescript": "5.9.3"
     },
     "contributes":

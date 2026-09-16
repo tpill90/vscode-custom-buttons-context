@@ -6,6 +6,7 @@
 // TODO see if its possible to add a right click entry that will add a file/folder to the "search.exclude" setting in the current workspace
 // TODO document how to add commands and how exactly the structure works.  I've forgotten how this works in the last 4 months.
 // TODO add eslint
+// TODO Reduce package size after adding esbuild.  Its 10 megs
 
 import * as vscode from 'vscode';
 import { CodeToHtmlCommand } from './CodeToHtmlCommand';
