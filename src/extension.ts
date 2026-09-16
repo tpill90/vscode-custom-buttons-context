@@ -7,9 +7,11 @@
 // TODO document how to add commands and how exactly the structure works.  I've forgotten how this works in the last 4 months.
 // TODO add eslint
 // TODO Reduce package size after adding esbuild.  Its 10 megs
+// TODO add inspect tokens and scopes command
 
 import * as vscode from 'vscode';
 import { CodeToHtmlCommand } from './CodeToHtmlCommand';
+import { CodeToHtmlCommandOriginal } from './CodeToHtmlCommandOriginal';
 import { CleanITGHtmlCommand } from './CleanITGlueHtmlCommand';
 
 type CommandDefinition = readonly [id: string, targetCommand: string];
@@ -32,8 +34,10 @@ export async function activate(context: vscode.ExtensionContext): Promise<void>
 {
     SetupSimpleCommands(context);
     setupComplexCommands(context);
+
     // TODO cleanup
     context.subscriptions.push(vscode.commands.registerCommand('tpill90.codeToHtml', CodeToHtmlCommand));
+    context.subscriptions.push(vscode.commands.registerCommand('tpill90.codeToHtmlOriginal', CodeToHtmlCommandOriginal));
     context.subscriptions.push(vscode.commands.registerCommand('tpill90.cleanITGHtml', CleanITGHtmlCommand));
 }
 
