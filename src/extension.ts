@@ -11,6 +11,7 @@
 
 import * as vscode from 'vscode';
 import { CodeToHtmlCommand } from './CodeToHtmlCommand';
+import { CodeToHtmlCommandOriginal } from './CodeToHtmlCommandOriginal';
 import { CleanITGHtmlCommand } from './CleanITGlueHtmlCommand';
 
 type CommandDefinition = readonly [id: string, targetCommand: string];
@@ -33,8 +34,10 @@ export async function activate(context: vscode.ExtensionContext): Promise<void>
 {
     SetupSimpleCommands(context);
     setupComplexCommands(context);
+
     // TODO cleanup
     context.subscriptions.push(vscode.commands.registerCommand('tpill90.codeToHtml', CodeToHtmlCommand));
+    context.subscriptions.push(vscode.commands.registerCommand('tpill90.codeToHtmlOriginal', CodeToHtmlCommandOriginal));
     context.subscriptions.push(vscode.commands.registerCommand('tpill90.cleanITGHtml', CleanITGHtmlCommand));
 }
 

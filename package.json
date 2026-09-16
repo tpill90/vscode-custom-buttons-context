@@ -99,6 +99,10 @@
             {
                 "command": "tpill90.cleanITGHtml",
                 "title": "Clean IT Glue HTML"
+            },
+            {
+                "command": "tpill90.codeToHtmlOriginal",
+                "title": "Convert Code to HTML (Original)"
             }
         ],
         "menus":
@@ -119,6 +123,11 @@
                     "command": "tpill90.cleanITGHtml",
                     "when": "editorLangId == html",
                     "group": "_1tpill90"
+                },
+                {
+                    "command": "tpill90.codeToHtmlOriginal",
+                    "when": "editorTextFocus",
+                    "group": "_2tpill90"
                 },
                 {
                     "command": "tpill90.removeEmptyLinesInSelection",
