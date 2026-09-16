@@ -5,6 +5,7 @@ import { CodeToHastOptions, codeToHtml, createHighlighter } from 'shiki';
 // TODO consider adding more colors for the powershell syntax.  Compare to ISE?
 // TODO comment and cleanup
 // TODO check the file extension and error out if its not powershell
+// TODO does not currently preserve the spacing of indented files
 export async function CodeToHtmlCommand(): Promise<void>
 {
     const editor = vscode.window.activeTextEditor;
