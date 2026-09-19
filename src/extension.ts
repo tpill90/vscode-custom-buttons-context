@@ -1,18 +1,23 @@
-// TODO add other useful buttons from the original extension
-// TODO find some better colored icons
+// TODO Commands to add:
+// - Right click -> Join lines
+// - Add a file/folder to the "search.exclude" setting in the current workspace
+// - Add a file/folder to the "files.exclude" setting in the current workspace
+// - Add inspect tokens and scopes command
+// - Add Apply Custom Context Menu button
 
-// TODO Right click -> Join lines
+// TODO find some better colored icons
 // TODO rename the commands to remove tpill90 and replace with something else
-// TODO see if its possible to add a right click entry that will add a file/folder to the "search.exclude" setting in the current workspace
 // TODO document how to add commands and how exactly the structure works.  I've forgotten how this works in the last 4 months.
 // TODO add eslint
 // TODO Reduce package size after adding esbuild.  Its 10 megs
-// TODO add inspect tokens and scopes command
+
 
 import * as vscode from 'vscode';
 import { CodeToHtmlCommand } from './CodeToHtmlCommand';
 import { CodeToHtmlCommandOriginal } from './CodeToHtmlCommandOriginal';
 import { CleanITGHtmlCommand } from './CleanITGlueHtmlCommand';
+import { BeautifyCommand } from './BeautifyCommand';
+import { ExcludeFromWorkspaceCommand } from './ExcludeFromWorkspaceCommand';
 
 type CommandDefinition = readonly [id: string, targetCommand: string];
 
@@ -29,16 +34,16 @@ const commandDefinitions: readonly CommandDefinition[] = [
     ['tpill90.startDebugging', 'workbench.action.debug.start']
 ];
 
-
 export async function activate(context: vscode.ExtensionContext): Promise<void>
 {
     SetupSimpleCommands(context);
-    setupComplexCommands(context);
 
     // TODO cleanup
     context.subscriptions.push(vscode.commands.registerCommand('tpill90.codeToHtml', CodeToHtmlCommand));
     context.subscriptions.push(vscode.commands.registerCommand('tpill90.codeToHtmlOriginal', CodeToHtmlCommandOriginal));
     context.subscriptions.push(vscode.commands.registerCommand('tpill90.cleanITGHtml', CleanITGHtmlCommand));
+    context.subscriptions.push(vscode.commands.registerCommand('tpill90.beautify', BeautifyCommand));
+    context.subscriptions.push(vscode.commands.registerCommand('tpill90.excludeFromWorkspace', ExcludeFromWorkspaceCommand));
 }
 
 // This basically sets up a simple 1 to 1 mapping between commands I define and existing commands.
@@ -56,32 +61,6 @@ function SetupSimpleCommands(context: vscode.ExtensionContext): void
     }
 }
 
-function setupComplexCommands(context: vscode.ExtensionContext): void
-{
-    const disposableBeautify = vscode.commands.registerCommand(
-        'tpill90.beautify',
-        () =>
-        {
-            const editor = vscode.window.activeTextEditor;
-
-            // No open text editor, skip formatting.
-            if (!editor)
-            {
-                return;
-            }
-
-            if (vscode.window.state.focused && !editor.selection.isEmpty)
-            {
-                void vscode.commands.executeCommand('editor.action.formatSelection');
-                return;
-            }
-
-            void vscode.commands.executeCommand('editor.action.formatDocument');
-        },
-    );
-
-    context.subscriptions.push(disposableBeautify);
-}
 
 export function deactivate(): void
 {

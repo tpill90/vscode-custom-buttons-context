@@ -103,6 +103,11 @@
             {
                 "command": "tpill90.codeToHtmlOriginal",
                 "title": "Convert Code to HTML (Original)"
+            },
+            {
+                "command": "tpill90.excludeFromWorkspace",
+                "title": "Exclude from Workspace",
+                "enablement": "resourceScheme == file"
             }
         ],
         "menus":
@@ -166,6 +171,14 @@
                     "when": "debuggersAvailable && !inDebugMode",
                     "command": "tpill90.startDebugging",
                     "group": "navigation@4"
+                }
+            ],
+            "explorer/context":
+            [
+                {
+                    "command": "tpill90.excludeFromWorkspace",
+                    "group": "navigation@50",
+                    "when": "resourceScheme == file"
                 }
             ]
         }
