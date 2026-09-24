@@ -42,13 +42,13 @@ function ConvertPowerShellToHtml(code: string): string
         // Escape HTML
         let escaped = EscapeHtml(line);
 
-        // Preserve indentation
-        escaped = escaped.replace(/^ +/, match =>
-        {
-            return '&nbsp;'.repeat(match.length * 2);
-        });
+
 
         // Highlight comments
+        escaped = escaped.replace(
+            /&quot;([^&]*)&quot;/g,
+            '<span style="color:#8B0000;">&quot;$1&quot;</span>',
+        );
         if (/^(&nbsp;)*#/.test(escaped))
         {
             escaped = `<span style="color:#2b7a2b;">${escaped}</span>`;
@@ -56,17 +56,24 @@ function ConvertPowerShellToHtml(code: string): string
             continue;
         }
 
+        // TODO not sure I like this changed color.  Original is c62828
         // Highlight strings
         escaped = escaped.replace(
             /&quot;([^&]*)&quot;/g,
-            '<span style="color:#c62828;">&quot;$1&quot;</span>',
+            '<span style="color:#8B0000;">&quot;$1&quot;</span>',
         );
 
         // Highlight cmdlet
         escaped = escaped.replace(
-            /^(&nbsp;)*([A-Za-z]+-[A-Za-z]+)/,
-            '$1<span style="color:#1565c0;">$2</span>',
+            /([A-Za-z]+-[A-Za-z]+)/,
+            '<span style="color:#1565c0;">$1</span>',
         );
+
+        // Preserve indentation
+        escaped = escaped.replace(/^ +/, match =>
+        {
+            return '&nbsp;'.repeat(match.length * 2);
+        });
 
         output.push(`    <div>${escaped}</div>`);
     }
